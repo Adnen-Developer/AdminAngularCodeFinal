@@ -71,8 +71,10 @@ const routes: Routes = [
   {path: 'evenement', component: EvenementListComponent},
   {path: 'evenement/create', component: EvenementFormComponent},
   {path: 'evenement/show', component: EvenementDetailsComponent},
+  { path: 'programme/add', component: AddProgrammeComponent },
+  { path: 'programme', component: ListProgrammeComponent },
+  { path: 'programme/update', component: UpdateProgrammeComponent },
 
-  {    path :'', component:AppComponent },
   {    path :'product', component:ProductComponent },
   {    path :'newProduct', component:AddProductComponent  },
   {    path :'editProduct/:id', component:EditProductComponent  },
@@ -83,21 +85,6 @@ const routes: Routes = [
   {    path :'listProduit', component:ListProduitComponent  },
   {    path :'modifProduit/:id', component:ModifProduitComponent  },
 
-  { path: '', pathMatch: 'full', redirectTo: 'create-espece' },
-  { path: 'create-espece', component: EspeceCreateComponent },
-  { path: 'edit-espece/:id', component: EspeceEditComponent },
-  { path: 'especes-list', component: EspeceListComponent },
-  { path: 'especes-list-client', component: EspeceClientComponent },
-
-  { path: '', pathMatch: 'full', redirectTo: 'create-categorie' },
-  { path: 'create-categorie', component: CategorieCreateComponent },
-  { path: 'edit-categorie/:id', component: CategorieEditComponent },
-  { path: 'categories-list', component: CategorieListComponent },
-
-
-  { path: 'programme/add', component: AddProgrammeComponent },
-  { path: 'programme', component: ListProgrammeComponent },
-  { path: 'programme/update', component: UpdateProgrammeComponent },
 
   {path: 'login', component: LoginComponent},
   {path: 'login1', component: Login1Component},
@@ -109,7 +96,21 @@ const routes: Routes = [
   {path: 'membre', component: MembreListComponent},
   {path: 'membre/update', component: MembreupdateComponent},
   {path: 'membre/profilmembre', component: ProfilmembreComponent},
-  
+
+  { path: 'create-espece', component: EspeceCreateComponent },
+  { path: 'edit-espece/:id', component: EspeceEditComponent },
+  { path: 'especes-list', component: EspeceListComponent },
+  { path: 'especes-list-client', component: EspeceClientComponent },
+
+
+  { path: 'create-categorie', component: CategorieCreateComponent },
+  { path: 'edit-categorie/:id', component: CategorieEditComponent },
+  { path: 'categories-list', component: CategorieListComponent },
+
+
+  {    path :'', component:AppComponent },
+    { path: '', pathMatch: 'full', redirectTo: 'create-espece' },
+  { path: '', pathMatch: 'full', redirectTo: 'create-categorie' },
 ];
 
 
