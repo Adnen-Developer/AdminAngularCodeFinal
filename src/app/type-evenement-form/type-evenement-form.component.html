@@ -1,0 +1,72 @@
+
+
+
+<h1>Add a new HUnting Event</h1>
+<form #f="ngForm">
+  <div class="form-group">
+    <label>libelle:</label>
+    <input type="text" name="libelle" class="form-control"
+           [(ngModel)]="typeEvenement.libelle" required minlength="5"
+           pattern="[a-zA-Z]+$" #t="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+    <div *ngIf="t.hasError('required')">libelle is required</div>
+    <div *ngIf="t.hasError('minlength')">libelle minlength is equal to 5</div>
+    <div *ngIf="t.hasError('pattern')">libelle pattern error</div>
+  </div>
+
+  <div class="form-group">
+    <label>obligatoire:</label>
+    <input type="text" name="prenom" class="form-control"
+           [(ngModel)]="typeEvenement.obligatoire" required #a="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="a.invalid">
+    typeEvenement  obligatoire field is required
+  </div>
+  <div class="form-group">
+    <label>nbrPartMax:</label>
+    <input type="text" name="email" class="form-control"
+           [(ngModel)]="typeEvenement.nbrPartMax" required #b="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="b.invalid">
+    nbrPartMax field is required
+  </div>
+  <div class="form-group">
+    <label>nbrPartMin:</label>
+    <input type="text" name="nbrPartMin" class="form-control"
+           [(ngModel)]="typeEvenement.nbrPartMin" required #c="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="c.invalid">
+    nbrPartMin  field is required
+  </div>
+
+  <div class="form-group">
+    <label>isLimited:</label>
+    <input type="text" name="isLimited" class="form-control"
+           [(ngModel)]="typeEvenement.isLimited" required #d="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="d.invalid">
+    isLimited boolean  field is required
+  </div>
+
+  <div class="form-group">
+    <label>isActive:</label>
+    <input type="text" name="adresse" class="form-control"
+           [(ngModel)]="typeEvenement.isActive" required #e="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="e.invalid">
+    isActive  boolean field is required
+  </div>
+  
+ <!-- -----------------------------------> 
+  <button class="btn btn-success" (click)="save() " [routerLink]="'/typeEvenement'"
+          [disabled]="t.invalid || a.invalid || b.invalid || c.invalid || d.invalid || e.invalid ">save
+  </button>
+</form>
+

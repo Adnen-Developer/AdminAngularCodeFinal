@@ -1,0 +1,111 @@
+<div class="app-wrapper">
+    <div class="app-content ">
+        <div class="container-xl">
+            <h1 class="app-page-title">Ajouté un programme</h1>
+    
+                    <h1 class="app-page-title"> Ajouté Programme</h1>
+                    <br>
+                    <br>
+                    <form #f="ngForm" (ngSubmit)="updateProgramme()"  >
+                        <div class="form-group">
+                            <label>Nom</label>
+                            
+                            <input type="text"  class="form-control" maxlength="20" name="nomProg" [(ngModel)]="programme.nomProg" required minlength="5"
+                            pattern="[a-zA-Z]+$" #t="ngModel">
+                   <br>
+                   <!---msg alert---->
+                   <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+                     <div *ngIf="t.hasError('required')">Enter un nom</div>
+                     <div *ngIf="t.hasError('minlength')">
+                        la longueur minimale du champ de nom est égale à 5</div>
+                     <div *ngIf="t.hasError('pattern')">erreur de modèle de nom</div>
+                   </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input class="form-control" name="description" rows="3" maxlength="50" [(ngModel)]="programme.description" required minlength="5"
+                            pattern="[a-zA-Z]+$" #d="ngModel">
+                   <br>
+                   <!---msg alert---->
+                   <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+                     <div *ngIf="d.hasError('required')">entrer une description</div>
+                     <div *ngIf="d.hasError('minlength')">la longueur minimale du champ de nom est égale à 5</div>
+                     <div *ngIf="d.hasError('pattern')">erreur de modèle de description</div>
+                   </div>
+                        </div>
+                        <div class="form-group">
+                            <label>regle</label>
+                            <input [(ngModel)]="programme.regle" name="regle" type="text"  class="form-control" required minlength="5"
+                            pattern="[a-zA-Z]+$" #r="ngModel">
+                   <br>
+                   <!---msg alert---->
+                   <div class="alert alert-danger" *ngIf="r.invalid && r.touched">
+                     <div *ngIf="r.hasError('required')">entrer une description</div>
+                     <div *ngIf="r.hasError('minlength')">la longueur minimale du champ de regle est égale à 5</div>
+                     <div *ngIf="r.hasError('pattern')">erreur de modèle de regle</div>
+                   </div>
+                        </div>
+                        <div class="form-group">
+                            <label>saison</label>
+                            <input [(ngModel)]="programme.saison" name="saison" id="saison" type="text" class="form-control" required minlength="5"
+                            pattern="[a-zA-Z]+$" #s="ngModel">
+                   <br>
+                   <!---msg alert---->
+                   <div class="alert alert-danger" *ngIf="s.invalid && s.touched">
+                     <div *ngIf="s.hasError('required')">entrer une saison</div>
+                     <div *ngIf="s.hasError('minlength')">la longueur minimale du champ de saison est égale à 5</div>
+                     <div *ngIf="s.hasError('pattern')">erreur de modèle de saison</div>
+                   </div>
+                        </div>
+                        <div class="form-group">
+                            <label>saison</label>
+                            <input [(ngModel)]="programme.image" name="file" id="file"   (change)="onFileSelect($event.target)" type="file" class="form-control" required minlength="5"
+                            pattern="[a-zA-Z]+$" #i="ngModel">
+                   <br>
+                   <!---msg alert---->
+                   <div class="alert alert-danger" *ngIf="i.invalid && i.touched">
+                     <div *ngIf="i.hasError('required')">entrer une saison</div>
+                     <div *ngIf="i.hasError('minlength')">la longueur minimale du champ de saison est égale à 5</div>
+                     <div *ngIf="i.hasError('pattern')">erreur de modèle de saison</div>
+                   </div>
+                        </div>                          
+                            <div class="form-group">
+                            <label>Date overture</label>
+                            <input [(ngModel)]="programme.dateOuverture"  name="dateOuverture" type="date" class="form-control" #do="ngModel">
+                            <br>
+                            <!---msg alert---->
+                            <div class="alert alert-danger" *ngIf="do.invalid && do.touched">
+                                <div *ngIf="today > programme.dateOuverture">
+                                    {{ programme.dateOuverture | date }} date overture doite etre suppereur la date d'aujourdhuit
+                              </div>
+                              
+                                                         
+                              <div *ngIf="do.hasError('pattern')">erreur de modèle de saison</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Date fermeture</label>
+                            <input [(ngModel)]="programme.dateFermeture" name="dateOuverture" type="date"  class="form-control">
+                        </div>
+<br>
+<label> Selectionner le lieux sur la carte </label>
+<br>
+<br>
+
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <div id="map-container" class="embed-responsive-item">
+                            <div id="map">
+                            </div>
+                            </div> 
+                            </div>`
+                        
+                        <br>
+                        <br>
+                        <button type="button" [disabled]="t.invalid || r.invalid || s.invalid || i.invalid || d.invalid "  class="btn app-btn-primary w-100 theme-btn mx-auto"  [routerLink]="'/programme'" >Submit</button>  
+                        <br> <br>
+                        <button type="button" [routerLink]="'/programme'" class="btn btn-danger w-100 theme-btn mx-auto"> Annuler</button>
+
+                    </form>
+                    </div>
+    </div>   
+</div>

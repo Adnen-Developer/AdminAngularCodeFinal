@@ -1,0 +1,79 @@
+<div class="app-content pt-3 p-md-3 p-lg-4"  *ngIf="adminIsConnected == true">
+    <div class="container-xl">
+  
+        <div class="row g-3 mb-4 align-items-center justify-content-between">
+            <div class="col-auto">
+                <h1 class="app-page-title mb-0">Liste des Administrateurs</h1>
+            </div>
+            <div class="col-auto">
+                 <div class="page-utilities">
+                    <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-danger"  [routerLink]="'/admin/create'">
+                                Créer un Admin </button>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-danger"  [routerLink]="'/membre'">
+                                Liste des membres </button>
+                        </div>
+                       
+                        
+                        
+                    </div><!--//row-->
+                </div><!--//table-utilities-->
+            </div><!--//col-auto-->
+        </div><!--//row-->
+       
+        <nav id="orders-table-tab" class="orders-table-tab app-nav-tabs nav shadow-sm flex-column flex-sm-row mb-4" role="tablist">
+            <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab" data-bs-toggle="tab" href="#orders-all" role="tab" aria-controls="orders-all" aria-selected="false">Liste des Admins</a>
+            
+        </nav>
+        
+        
+        <div class="tab-content" id="orders-table-tab-content">
+            <div class="tab-pane fade show active" id="orders-all" role="tabpanel" aria-labelledby="orders-all-tab">
+                <div class="app-card app-card-orders-table shadow-sm mb-5">
+                    <div class="app-card-body">
+                        <div class="table-responsive">
+                            <table class="table app-table-hover mb-0 text-left">
+                                <thead>
+                                    <tr>
+
+                                        <th class="cell">Nom</th>
+                                        <th class="cell">Prénom</th>
+                                        <th class="cell">Id</th>
+                                        <th class="cell">Email</th>
+                                        <th class="cell">Numéro de Tél</th>
+                                        <th class="cell">Adressse</th>
+                                        <th class="cell">Date création</th>
+                                        <th class="cell">Date de Mise à jour</th>    
+                                        <th class="cell">Statut</th>
+                                        <th class="cell">Voir</th>
+                                        <th class="cell">Mettre à jour</th>
+                                        <th class="cell">Supprimer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let admin of list, let i= index">
+
+                                        <td class="cell">{{admin.nom}}</td>
+                                        <td class="cell"><span class="truncate">{{admin.prenom}}</span></td>
+                                        <td class="cell"><span class="truncate">{{admin._id}}</span></td>
+                                        <td class="cell">{{admin.email}}</td>
+                                        <td class="cell">{{admin.numTel}}</td>
+                                        <td class="cell">{{admin.adresse}}</td>
+                                        <td class="cell">{{admin.dateCre}}</td>
+                                        <td class="cell">{{admin.dateupdate}}</td>
+                                        <td class="cell"><span class="badge bg-success">{{admin.isActive}}</span></td>
+                                        <td> <button class="btn btn-sm btn-danger"  [routerLink]="'/profil'" [queryParams]="{ _id: admin._id}">
+                                           Voir </button></td>
+                                        <td> <button class="btn btn-sm btn-warning"  [routerLink]="'/admin/update'" [queryParams]="{ _id: admin._id}" >
+                                            Mettre à jour </button></td>
+                                        
+                                        <td><button class="btn btn-sm btn-warning"  (click)="delete(admin._id)">
+                                              delete admin </button>
+                                          </td>
+                                    </tr>
+
+                                
+     

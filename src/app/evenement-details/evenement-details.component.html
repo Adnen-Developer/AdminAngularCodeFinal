@@ -1,0 +1,105 @@
+
+<h1>Add a new Evenement</h1>
+<form #f="ngForm">
+  <div class="form-group">
+    <label>description:</label>
+    <input type="text" name="description" class="form-control"
+           [(ngModel)]="evenement.description" required minlength="5"
+           pattern="[a-zA-Z]+$" #t="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+    <div *ngIf="t.hasError('required')">description field is required</div>
+    <div *ngIf="t.hasError('minlength')">description field minlength is equal to 5</div>
+    <div *ngIf="t.hasError('pattern')">description pattern error</div>
+  </div>
+
+  <div class="form-group">
+    <label>dateDeb:</label>
+    <input type="text" name="dateDeb" class="form-control"
+           [(ngModel)]="evenement.dateDeb" required #a="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="a.invalid">
+    dateDeb this field is required
+  </div>
+   
+
+
+  <div class="form-group">
+    <label>dateFin:</label>
+    <input type="text" name="dateFin" class="form-control"
+           [(ngModel)]="evenement.dateFin" required #b="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="b.invalid">
+    dateFin field is required
+  </div>
+  <div class="form-group">
+    <label>lieu:</label>
+    <input type="text" name="lieu" class="form-control"
+           [(ngModel)]="evenement.lieu" required #c="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="c.invalid">
+    lieu  field is required
+  </div>
+
+  <div class="form-group">
+    <label>image:</label>
+    <input type="text" name="image" class="form-control"
+           [(ngModel)]="evenement.image" required #d="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="d.invalid">
+    image  field is required
+  </div>
+
+  <div class="form-group">
+    <label>instanceOrg:</label>
+    <input type="text" name="instanceOrg" class="form-control"
+           [(ngModel)]="evenement.instanceOrg" required #e="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="e.invalid">
+    instanceOrg  field is required
+  </div>
+  
+  <div class="form-group">
+    <label>typeEvenement:</label>
+    <input type="text" name="typeEvenement" class="form-control"
+           [(ngModel)]="evenement.typeEvenement" required #f="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="f.invalid">
+    typeEvenement  field is required
+  </div>
+
+  <div class="form-group">
+    <label>isActive:</label>
+    <input type="text" name="isActive" class="form-control"
+           [(ngModel)]="evenement.isActive" required #g="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="g.invalid">
+    isActive  field is required
+  </div>
+
+  
+  <div class="form-group">
+    <label>admin:</label>
+    <input type="text" name="admin" class="form-control"
+           [(ngModel)]="evenement.admin" required #h="ngModel">
+  </div><br>
+  <!---msg alert---->
+  <div class="alert alert-danger" *ngIf="h.invalid">
+    admin  field is required
+  </div>
+
+ <!-- -----------------------------------> 
+  <button class="btn btn-success" (click)="updateEvent() " [routerLink]="'/evenement'"
+          [disabled]="t.invalid || a.invalid || b.invalid || c.invalid || d.invalid || e.invalid || f.invalid || g.invalid || h.invalid || f.invalid">save
+  </button>
+</form>
+
+

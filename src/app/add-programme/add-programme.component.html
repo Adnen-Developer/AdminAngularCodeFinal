@@ -1,0 +1,73 @@
+<div class="app-wrapper">
+    <div class="app-content ">
+        <div class="container-xl">
+            <h1 class="app-page-title">Ajouter un programme</h1>
+    
+                    <h1 class="app-page-title"> Ajouter Programme</h1>
+                    <br>
+                    <br>
+                    <form [formGroup]="programmeForm"  novalidate enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input type="text" formControlName="nomProg" class="form-control" maxlength="20">
+                            <small *ngIf="programmeForm.get('nomProg')?.invalid && programmeForm.get('nomProg')?.touched" class="text-danger"> Nom est obligatoire</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input class="form-control" formControlName="description" rows="3" maxlength="50"> 
+                            <small *ngIf="programmeForm.get('description')?.invalid && programmeForm.get('description')?.touched" class="text-danger"> Description est obligatoire</small>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Regle</label>
+                            <input type="text" formControlName="regle" class="form-control"> 
+                            <small *ngIf="programmeForm.get('regle')?.invalid && programmeForm.get('regle')?.touched" class="text-danger"> regle est obligatoire</small>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Saison</label>
+                            <input type="text" formControlName="saison" class="form-control">
+                            <small *ngIf="programmeForm.get('saison')?.invalid && programmeForm.get('saison')?.touched" class="text-danger"> saison est obligatoire</small>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                              <input (change)="onFileSelect($event)" id="file" type="file" class="form-control" formControlName="image" required>
+                              <small *ngIf="programmeForm.get('image')?.invalid && programmeForm.get('image')?.touched" class="text-danger"> saison est obligatoire </small>
+                              <div *ngIf="imageData">
+                                <img [src]="imageData" >
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <label>Date overture</label>
+
+                           
+                            <input type="date" formControlName="dateOuverture" class="form-control">
+                            <small *ngIf="programmeForm.get('dateOuverture')?.invalid && programmeForm.get('dateOuverture')?.touched" class="text-danger"> Date overture est obligatoire</small>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Date fermeture</label>
+                            <input type="date" formControlName="dateFermeture" class="form-control">
+                            <small *ngIf="programmeForm.get('dateFermeture')?.invalid && programmeForm.get('dateFermeture')?.touched" class="text-danger"> Date fermeture est obligatoire</small>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Map</label>
+
+                            <div  formControlName="gelocation" id="map"></div>
+                            <small *ngIf="programmeForm.get('gelocation')?.touched && programmeForm.get('dateFermeture')?.touched" class="text-danger"> choisir une localisation dans la map</small>
+
+                        </div>
+                        
+                        <br>
+                        <br>
+                        <button type="button"  [disabled]="  programmeForm.get('description')?.invalid  || programmeForm.get('saison')?.invalid || programmeForm.get('regle')?.invalid || programmeForm.get('nomProg')?.invalid || programmeForm.get('dateFermeture')?.invalid || programmeForm.get('dateOverture')?.invalid || programmeForm.get('gelocation')?.touched "   (click)="submitForm()"    [routerLink]="'/programme'" class="btn btn-primary w-100 theme-btn mx-auto" >Submit</button>  
+
+<br> <br>
+                        <a type="button" [routerLink]="'/programme'" class="btn btn-danger w-100 theme-btn mx-auto"> Annuler</a>
+                    </form>
+                    </div>
+    </div>   
+</div>

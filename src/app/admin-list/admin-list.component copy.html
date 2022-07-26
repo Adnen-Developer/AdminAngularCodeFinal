@@ -1,0 +1,54 @@
+<h1>{{title}}</h1>
+<div  class="alert alert-danger">
+ <!-- book number out of stock :{{getStatBook()}}
+    -->
+</div>
+<input type="text" name="inputText"
+       placeholder="a new title"
+       class="form-control" [(ngModel)]="title">
+<br>
+<table class="table table-info">
+  <thead>
+    <tr>
+      <th>_id</th>
+      <th>nom</th>
+      <th>prenom</th>
+      <th>email</th>
+      <th>dateNaiss</th>
+      <th>image</th>
+      <th>adresse</th>
+      <th>numTel</th>
+      <th>password</th>
+      <th>dateCre</th>
+      <th>dateupdate</th>
+      <th>isActive</th>
+      <th>role</th>    
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let admin of list, let i= index">
+    <td>{{admin._id}}</td>
+    <td>{{admin.nom}}</td>
+    <td>{{admin.prenom}}</td>
+    <td>{{admin.email}}</td>
+    <td>{{admin.dateNaiss}}</td>
+    <td>{{admin.image}}</td>
+    <td>{{admin.adresse}}</td>
+    <td>{{admin.numTel}}</td>
+    <td>{{admin.password}}</td>
+    <td>{{admin.dateCre}}</td>
+    <td>{{admin.dateupdate}}</td>
+    <td>{{admin.isActive}}</td>
+    <td>{{admin.role}}</td>
+ <!--   <td>
+      <button class="btn btn-sm btn-warning" [disabled]="book.quantity==0" (click)="buyBook(i)">
+      Buy this book 1</button>
+    </td>
+-->
+    <td>
+      <button class="btn btn-sm btn-warning" [disabled]="admin.isActive == true" (click)="delete(admin._id)">
+        delete admin </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
